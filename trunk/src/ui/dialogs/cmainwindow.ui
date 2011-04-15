@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CMainWindow</class>
+ <widget class="QMainWindow" name="CMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>480</width>
+    <height>522</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>GPS Tool</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../../res/resources.qrc">
+    <normaloff>:/icons/application.png</normaloff>:/icons/application.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTabWidget" name="twMain">
+      <property name="tabPosition">
+       <enum>QTabWidget::South</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="movable">
+       <bool>false</bool>
+      </property>
+      <widget class="QWidget" name="tabMap">
+       <attribute name="title">
+        <string>Map</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="ui::graphics::CMapView" name="graphicsView"/>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <widget class="QLabel" name="lZoomLevel">
+            <property name="text">
+             <string>0</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="buddy">
+             <cstring>sliderZoom</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="sliderZoom">
+            <property name="maximum">
+             <number>17</number>
+            </property>
+            <property name="pageStep">
+             <number>3</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBelow</enum>
+            </property>
+            <property name="tickInterval">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pwText">
+       <attribute name="title">
+        <string>Text</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="ui::graphics::CTextView" name="graphicsView_2"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pwSatellites">
+       <attribute name="title">
+        <string>Satellites</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="ui::graphics::CSatellitesView" name="graphicsView_3"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabOptions">
+       <attribute name="title">
+        <string>Options</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QTabWidget" name="twOptions">
+          <property name="tabPosition">
+           <enum>QTabWidget::South</enum>
+          </property>
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tabOMain">
+           <attribute name="title">
+            <string>Main</string>
+           </attribute>
+           <layout class="QFormLayout" name="formLayout">
+            <property name="fieldGrowthPolicy">
+             <enum>QFormLayout::ExpandingFieldsGrow</enum>
+            </property>
+            <property name="formAlignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_10">
+              <property name="text">
+               <string>GPS Tool home path</string>
+              </property>
+              <property name="buddy">
+               <cstring>leApplicatioPath</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QLineEdit" name="leApplicatioPath">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="tbSelectApplicationPath">
+                <property name="text">
+                 <string>...</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>:/icons/icons/open.png</normaloff>:/icons/icons/open.png</iconset>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Satellite signal wait cycles</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>sbSatelliteSignalWait</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QSpinBox" name="sbSatelliteSignalWait">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="suffix">
+               <string> times</string>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>999</number>
+              </property>
+              <property name="value">
+               <number>60</number>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>GPS database file</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>leDBFile</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QLineEdit" name="leDBFile">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="tbSelectDBFile">
+                <property name="text">
+                 <string>...</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>:/icons/icons/open.png</normaloff>:/icons/icons/open.png</iconset>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="label_9">
+              <property name="text">
+               <string>Good data wait cycles</string>
+              </property>
+              <property name="buddy">
+               <cstring>sbGoodDataWait</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QSpinBox" name="sbGoodDataWait">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="suffix">
+               <string> times</string>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="value">
+               <number>3</number>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_8">
+              <property name="text">
+               <string>Animation duration</string>
+              </property>
+              <property name="buddy">
+               <cstring>leAnimationDuration</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLineEdit" name="leAnimationDuration">
+              <property name="inputMask">
+               <string>000000; </string>
+              </property>
+              <property name="text">
+               <string>1000</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QCheckBox" name="cbUseAnimation">
+              <property name="text">
+               <string>Use animation</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="1">
+             <widget class="QCheckBox" name="cbUseStyles">
+              <property name="text">
+               <string>Use styles</string>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="1">
+             <widget class="QCheckBox" name="cbSStoreSatellites">
+              <property name="text">
+               <string>Store satellites in db</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="ui::controls::CGpsSourcesListWidget" name="tabOGPSSources">
+           <attribute name="title">
+            <string>GPS sources</string>
+           </attribute>
+          </widget>
+          <widget class="ui::controls::CMapSourcesTableWidget" name="tabOMapSources">
+           <attribute name="title">
+            <string>Map sources</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="tabStyles">
+           <attribute name="title">
+            <string>Styles</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>Main style</string>
+              </property>
+              <property name="buddy">
+               <cstring>pteMainStyle</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPlainTextEdit" name="pteMainStyle"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>Day style</string>
+              </property>
+              <property name="buddy">
+               <cstring>pteDayStyle</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPlainTextEdit" name="pteDayStyle"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Night style</string>
+              </property>
+              <property name="buddy">
+               <cstring>pteNightStyle</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPlainTextEdit" name="pteNightStyle"/>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <spacer name="horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Switch to night at</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>teNightStartTime</cstring>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTimeEdit" name="teNightStartTime">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::UpDownArrows</enum>
+                </property>
+                <property name="time">
+                 <time>
+                  <hour>20</hour>
+                  <minute>0</minute>
+                  <second>0</second>
+                 </time>
+                </property>
+                <property name="displayFormat">
+                 <string>HH:mm</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_6">
+                <property name="text">
+                 <string>Switch to day at</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>teDayStartTime</cstring>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTimeEdit" name="teDayStartTime">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="time">
+                 <time>
+                  <hour>8</hour>
+                  <minute>0</minute>
+                  <second>0</second>
+                 </time>
+                </property>
+                <property name="displayFormat">
+                 <string>HH:mm</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pbApplyStyles">
+                <property name="text">
+                 <string>Apply</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../../../res/resources.qrc">
+                  <normaloff>:/icons/dialog-apply.png</normaloff>:/icons/dialog-apply.png</iconset>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pwLog">
+       <attribute name="title">
+        <string>Log</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <widget class="logging::ui::CLogView" name="listWidget"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="ui::controls::CStatusWidget" name="pwGpsSrcSelector" native="true"/>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ui::controls::CMapSourcesTableWidget</class>
+   <extends>QWidget</extends>
+   <header>cmapsourcestablewidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ui::graphics::CMapView</class>
+   <extends>QGraphicsView</extends>
+   <header>cmapview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ui::graphics::CSatellitesView</class>
+   <extends>QGraphicsView</extends>
+   <header>csatellitesview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ui::graphics::CTextView</class>
+   <extends>QGraphicsView</extends>
+   <header>ctextview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>logging::ui::CLogView</class>
+   <extends>QListWidget</extends>
+   <header>clogview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ui::controls::CStatusWidget</class>
+   <extends>QWidget</extends>
+   <header>cstatuswidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ui::controls::CGpsSourcesListWidget</class>
+   <extends>QWidget</extends>
+   <header>cgpssourceslistwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>leApplicatioPath</tabstop>
+  <tabstop>tbSelectApplicationPath</tabstop>
+  <tabstop>sbSatelliteSignalWait</tabstop>
+  <tabstop>leDBFile</tabstop>
+  <tabstop>tbSelectDBFile</tabstop>
+  <tabstop>twMain</tabstop>
+  <tabstop>graphicsView</tabstop>
+  <tabstop>graphicsView_2</tabstop>
+  <tabstop>sliderZoom</tabstop>
+  <tabstop>pteMainStyle</tabstop>
+  <tabstop>pteDayStyle</tabstop>
+  <tabstop>pteNightStyle</tabstop>
+  <tabstop>teNightStartTime</tabstop>
+  <tabstop>teDayStartTime</tabstop>
+  <tabstop>pbApplyStyles</tabstop>
+  <tabstop>listWidget</tabstop>
+  <tabstop>twOptions</tabstop>
+  <tabstop>graphicsView_3</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../../res/resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>cbUseAnimation</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>leAnimationDuration</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>271</x>
+     <y>231</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>340</x>
+     <y>260</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
